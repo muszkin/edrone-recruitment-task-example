@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  db:
+    image: mariadb:10.4
+    environment:
+      - MARIADB_ROOT_PASSWORD=spring
+      - MARIADB_AUTHENTICATION_PLUGIN=mysql_native
+      - MARIADB_DATABASE=spring
+      - MARIADB_USER=spring
+      - MARIADB_PASSWORD=spring
+      - MARIADB_INITDB_SKIP_TZINFO=true
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data2:/var/lib/mysql
