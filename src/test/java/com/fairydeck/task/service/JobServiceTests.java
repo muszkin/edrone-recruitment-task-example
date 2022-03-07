@@ -45,7 +45,7 @@ class JobServiceTests {
     @Test
     void testCreateJob() {
         AddJobRequest addJobRequest = new AddJobRequest();
-        addJobRequest.setLimit(1000000);
+        addJobRequest.setLimit(BigInteger.valueOf(1000000));
         addJobRequest.setMin(1);
         addJobRequest.setMax(1);
         Assertions

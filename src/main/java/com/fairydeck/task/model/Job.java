@@ -3,6 +3,7 @@ package com.fairydeck.task.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "jobs")
@@ -20,12 +21,12 @@ public class Job {
     private int min;
     private int max;
     private String charMap;
-    private int count;
+    private BigInteger count;
 
     @Enumerated
     private Status status;
 
-    public Job(int min, int max, int limit, String charMap) {
+    public Job(int min, int max, BigInteger limit, String charMap) {
         this.min = min;
         this.max = max;
         this.count = limit;

@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigInteger;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -32,7 +33,7 @@ class WordGeneratorTests {
 
     @Test
     void testGenerateStringsList() {
-        Job job = new Job(1,3,10,"abc");
+        Job job = new Job(1,3, BigInteger.valueOf(10),"abc");
         Set<String> words = wordGenerator.generateStringsList(job);
 
         Assertions

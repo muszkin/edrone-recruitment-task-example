@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.Random;
@@ -84,8 +85,8 @@ public class WordGenerator {
    * @return Set of strings
    */
   public Set<String> generateStringsList(Job job) {
-    Set<String> set = new HashSet<>(job.getCount());
-    while (set.size() < job.getCount()) {
+    Set<String> set = new HashSet<>();
+    while ( BigInteger.valueOf(set.size()).compareTo(job.getCount()) < 0 ) {
       String generatedString = getRandomWord(random.nextInt(job.getMax() + 1 - job.getMin()) + job.getMin(), job.getCharMap().toCharArray());
       set.add(generatedString);
     }

@@ -43,14 +43,14 @@ public class JobService {
         if (addJobRequest.getMax() < 1) {
             addJobRequest.setMax(1);
         }
-        if (addJobRequest.getLimit() < 1) {
-            addJobRequest.setLimit(1);
+        if (addJobRequest.getLimit().compareTo(BigInteger.ONE) < 0) {
+            addJobRequest.setLimit(BigInteger.ONE);
         }
         if (addJobRequest.getMin() > addJobRequest.getMax()) {
             addJobRequest.setMin(addJobRequest.getMax());
             addJobRequest.setMax(addJobRequest.getMin());
         }
-        if (getPossiblePermutations(addJobRequest).compareTo(BigInteger.valueOf(addJobRequest.getLimit())) < 0) {
+        if (getPossiblePermutations(addJobRequest).compareTo(addJobRequest.getLimit()) < 0) {
             throw new TooBigLimitException("Number of possible random words is less than number you want.");
         }
         Job job = new Job(addJobRequest.getMin(), addJobRequest.getMax(), addJobRequest.getLimit(), addJobRequest.getCharMap());
